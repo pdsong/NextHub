@@ -9,8 +9,8 @@
       <p>Vue.js</p>
     </div>
     <ul>
-      <li class="active">
-        <router-link
+      <li >
+        <router-link  
           :to="{
             name: 'index',
           }"
@@ -20,7 +20,17 @@
         </router-link>
       </li>
       <li>
-        <span class="item">Posts</span>
+        <router-link  
+          :to="{
+            name: 'news',
+          }"
+          class="item"
+        >
+          news
+        </router-link>
+      </li>
+      <li>
+        <span class="item">news</span>
       </li>
       <li>
         <span class="item">Categories</span>
