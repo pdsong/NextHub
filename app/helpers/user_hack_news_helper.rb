@@ -1,0 +1,2 @@
+module UserHackNewsHelper
+end

@@ -16,5 +16,6 @@ Rails.application.routes.draw do
   get '/hackNews/listNow', to: 'hack_news#list_now', defaults: { format: :json }
   get '/(*path)', to: 'application#website', as: :website
 
+  resources :user_hack_news, only: [:create]
 
 end

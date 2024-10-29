@@ -43,6 +43,7 @@
 const pageName = 'About';
 import { onMounted, ref } from 'vue';
 import axios from 'axios'
+import apiClient from '@/services/apiClent';
 
 // 定义数据源
 const source = ref([
@@ -50,22 +51,22 @@ const source = ref([
 ]);
 
 const toggleCollect = (item) => {
-  item.active = !item.active; // Toggle the active state
-  const card= source.value.find(card=>card.id===item.id);
-  if(card){
-    card.isCollect=!card.isCollect
-  }
-  sendRequest(item);
+  // item.active = !item.active; // Toggle the active state
+  // const card= source.value.find(card=>card.id===item.id);
+  // if(card){
+  //   card.isCollect=!card.isCollect
+  // }
+  postCollectChange(item);
 }
 
-const sendRequest = async (item) => {
-  try {
-    const response = await axios.post('/your-endpoint', { id: item.id });
-    console.log('Request sent', response);
-  } catch (error) {
-    console.error('Error sending request', error);
-  }
-}
+// const sendRequest = async (item) => {
+//   try {
+//     const response = await axios.post('/your-endpoint', { id: item.id });
+//     console.log('Request sent', response);
+//   } catch (error) {
+//     console.error('Error sending request', error);
+//   }
+// }
 
 const fetchData = async () => {
   try {
@@ -75,6 +76,27 @@ const fetchData = async () => {
     console.error("Error fetching data:", error)
   }
 }
+
+const postCollectChange = async (item) => {
+    try {
+      let param={
+                  "user_hack_news": {
+                    "user_id": 1,
+                    "hack_news_id": item.id
+                  }
+                }
+      // const response = await apiClient.get('/one/two'); // 替换为你的 API 端点
+      const response = await apiClient.post('/user_hack_news',param); // 替换为你的 API 端点
+      data.value = response.data;
+      item.active = !item.active; // Toggle the active state
+      const card= source.value.find(card=>card.id===item.id);
+      if(card){
+        card.isCollect=!card.isCollect
+      }
+    } catch (err) {
+      error.value = '请求失败:' + err.message;
+    }
+  }
 
 onMounted(()=>{
   fetchData()

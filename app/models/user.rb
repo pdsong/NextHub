@@ -28,4 +28,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :validatable, :trackable,
          :jwt_authenticatable, jwt_revocation_strategy: self
+         
+  has_many :user_hack_news
+  has_many :hack_news, through: :user_hack_news
 end

@@ -11,4 +11,7 @@
 #  updated_at :datetime         not null
 #
 class HackNews < ApplicationRecord
+
+  has_many :user_hack_news
+  has_many :users, through: :user_hack_news
 end
