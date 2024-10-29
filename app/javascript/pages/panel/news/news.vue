@@ -1,7 +1,4 @@
 <template>
-  <h2 class="text-center">You are visiting the {{ pageName }} page!</h2>
-  
-    <el-button>Default</el-button>
       <el-row :gutter="20">
     <el-col v-for="(item, index) in source" :key="index" :xs="24" :sm="12" :md="8" :lg="6">
       <el-icon><Box /></el-icon>
@@ -40,7 +37,6 @@
 </template>
 
 <script setup >
-const pageName = 'About';
 import { onMounted, ref } from 'vue';
 import axios from 'axios'
 import apiClient from '@/services/apiClent';

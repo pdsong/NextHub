@@ -14,8 +14,9 @@ Rails.application.routes.draw do
 
   get '/panel(/*path)', to: 'application#panel', as: :panel
   get '/hackNews/listNow', to: 'hack_news#list_now', defaults: { format: :json }
-  get '/(*path)', to: 'application#website', as: :website
+  # 注掉 否则拦截get
+  # get '/(*path)', to: 'application#website', as: :website
 
-  resources :user_hack_news, only: [:create]
+  resources :user_hack_news, only: [:create, :index]
 
 end

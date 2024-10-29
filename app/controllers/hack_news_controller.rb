@@ -1,4 +1,5 @@
 class HackNewsController < ApplicationController
+  include Pagy::Backend
   # skip_before_action :authenticate_user!, only: [:list_now]
   # def list_now
   #   hack_new_list = HackNews.order(in_time: :desc).limit(100)
@@ -30,4 +31,7 @@ class HackNewsController < ApplicationController
       render json: hack_new_list
     end
   end
+
+
+
 end

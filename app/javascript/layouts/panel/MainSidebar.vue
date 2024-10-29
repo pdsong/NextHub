@@ -26,12 +26,20 @@
           }"
           class="item"
         >
-          news
+          黑客新闻
         </router-link>
       </li>
       <li>
-        <span class="item">news</span>
+        <router-link  
+          :to="{
+            name: 'favoriteLink',
+          }"
+          class="item"
+        >
+          我的收藏
+        </router-link>
       </li>
+
       <li>
         <span class="item">Categories</span>
       </li>
