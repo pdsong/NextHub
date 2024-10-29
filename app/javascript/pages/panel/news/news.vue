@@ -44,7 +44,7 @@ const pageName = 'About';
 import { onMounted, ref } from 'vue';
 import axios from 'axios'
 import apiClient from '@/services/apiClent';
-
+import { ElMessage } from 'element-plus';
 // 定义数据源
 const source = ref([
   { name: '百度', enName: 'Baidu', link: 'https://www.baidu.com' }
@@ -85,16 +85,16 @@ const postCollectChange = async (item) => {
                     "hack_news_id": item.id
                   }
                 }
-      // const response = await apiClient.get('/one/two'); // 替换为你的 API 端点
-      const response = await apiClient.post('/user_hack_news',param); // 替换为你的 API 端点
-      data.value = response.data;
+      const response = await apiClient.post('/user_hack_news',param); 
+      //返回的 response 对象通常包含以下结构 data status....
+      ElMessage.success(response.data.message)            
       item.active = !item.active; // Toggle the active state
       const card= source.value.find(card=>card.id===item.id);
       if(card){
         card.isCollect=!card.isCollect
       }
     } catch (err) {
-      error.value = '请求失败:' + err.message;
+      ElMessage.error('请求出错: ' + (err.message || '未知错误'));
     }
   }
 
