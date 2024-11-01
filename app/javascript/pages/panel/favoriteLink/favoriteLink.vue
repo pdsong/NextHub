@@ -37,7 +37,7 @@ const fetchData = async (page) => {
   try {
     // const response = await axios.get(`/api/data?page=${page}`);
     // data.value = response.data; // 更新数据
-    const response = await apiClient.get('/user_hack_news',{
+    const response = await apiClient.get('/api/v1/user_hack_news',{
           params: {
             page: currentPage.value,
             per_page: 12,

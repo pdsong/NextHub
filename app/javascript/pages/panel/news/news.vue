@@ -66,7 +66,7 @@ const toggleCollect = (item) => {
 
 const fetchData = async () => {
   try {
-    const response = await axios.get('http://localhost:3000/hackNews/listNow')
+    const response = await axios.get('http://localhost:3000/api/v1/hackNews/listNow')
     source.value = response.data
   } catch (error) {
     console.error("Error fetching data:", error)
@@ -81,7 +81,7 @@ const postCollectChange = async (item) => {
                     "hack_news_id": item.id
                   }
                 }
-      const response = await apiClient.post('/user_hack_news',param); 
+      const response = await apiClient.post('/api/v1/user_hack_news',param); 
       //返回的 response 对象通常包含以下结构 data status....
       ElMessage.success(response.data.message)            
       item.active = !item.active; // Toggle the active state

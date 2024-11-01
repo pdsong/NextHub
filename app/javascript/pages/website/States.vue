@@ -33,7 +33,7 @@ const source = ref([
 
 const fetchData = async () => {
   try {
-    const response = await axios.get('http://localhost:3000/hackNews/listNow')
+    const response = await axios.get('http://localhost:3000/api/v1/hackNews/listNow')
     source.value = response.data
   } catch (error) {
     console.error("Error fetching data:", error)
