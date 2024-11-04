@@ -9,6 +9,7 @@
 #  in_time    :datetime
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  type       :integer          default(0), not null
 #
 class HackNews < ApplicationRecord
 
